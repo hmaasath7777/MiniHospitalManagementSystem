@@ -41,5 +41,22 @@ public class Main {
 
         System.out.println("\n--- Updated Waiting Queue ---");
         queue.displayQueue();
+
+        // ---------- Treatment Stack Testing ----------
+        System.out.println("\n\n=== Treatment Stack Testing ===");
+        TreatmentStack treatmentStack = new TreatmentStack();
+
+        treatmentStack.push(new TreatmentRecord(201, "Anwar", "Wound Dressing", "2026-09-06"));
+        treatmentStack.push(new TreatmentRecord(202, "Priya", "ECG and Medication", "2026-09-06"));
+        treatmentStack.push(new TreatmentRecord(203, "Ravi", "Burn Ointment Applied", "2026-09-06"));
+
+        System.out.println("\n--- All Treatment Records ---");
+        treatmentStack.displayStack();
+
+        System.out.println("\n--- Pop (Remove most recent treatment) ---");
+        treatmentStack.pop();
+
+        System.out.println("\n--- Updated Treatment Records ---");
+        treatmentStack.displayStack();
     }
 }
