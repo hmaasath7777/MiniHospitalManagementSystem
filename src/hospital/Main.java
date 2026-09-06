@@ -6,9 +6,13 @@ public class Main {
         // ---------- BST Testing ----------
         PatientBST bst = new PatientBST();
 
-        bst.insert(new Patient(101, "Kumar", 45, "0771234567", "Fracture"));
-        bst.insert(new Patient(105, "Nisha", 30, "0779876543", "Fever"));
-        bst.insert(new Patient(102, "Saman", 60, "0712345678", "Heart Pain"));
+        Patient patientKumar = new Patient(101, "Kumar", 45, "0771234567", "Fracture");
+        Patient patientNisha = new Patient(105, "Nisha", 30, "0779876543", "Fever");
+        Patient patientSaman = new Patient(102, "Saman", 60, "0712345678", "Heart Pain");
+
+        bst.insert(patientKumar);
+        bst.insert(patientNisha);
+        bst.insert(patientSaman);
 
         System.out.println("--- All Patients (In-order) ---");
         bst.inorderTraversal();
@@ -58,5 +62,30 @@ public class Main {
 
         System.out.println("\n--- Updated Treatment Records ---");
         treatmentStack.displayStack();
+
+        // ---------- Visit History Linked List Testing ----------
+        System.out.println("\n\n=== Visit History Linked List Testing ===");
+        VisitHistoryList visitHistory = new VisitHistoryList();
+
+        visitHistory.addVisit(patientSaman, new VisitNode(1, "2026-01-10", "Dr. Perera", "Chest Pain", "ECG Test"));
+        visitHistory.addVisit(patientSaman, new VisitNode(2, "2026-03-15", "Dr. Fernando", "Follow-up", "Medication Adjusted"));
+        visitHistory.addVisit(patientSaman, new VisitNode(3, "2026-06-20", "Dr. Perera", "Routine Checkup", "Blood Test"));
+
+        System.out.println("\n--- Visit History for Saman ---");
+        visitHistory.displayHistory(patientSaman);
+
+        System.out.println("\n--- Search Visit ID 2 ---");
+        VisitNode foundVisit = visitHistory.searchVisit(patientSaman, 2);
+        if (foundVisit != null) {
+            foundVisit.display();
+        } else {
+            System.out.println("Visit not found.");
+        }
+
+        System.out.println("\n--- Remove Visit ID 2 ---");
+        visitHistory.removeVisit(patientSaman, 2);
+
+        System.out.println("\n--- Updated Visit History for Saman ---");
+        visitHistory.displayHistory(patientSaman);
     }
 }
